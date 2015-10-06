@@ -3,24 +3,68 @@
 <head>
 	<title>Fighter Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" >
+	var pane = document.getElementsById('#container'),
+	    box = document.getElementsById('#plane'),
+	    w = pane.width() - box.width(),
+	    d = {},
+	    x = 3;
 
+	pane = $('#container');
+	box = $('#plane');
+	alert('boxW: ' + box.width());
+	alert('paneW: ' + pane.width());
+
+	function newv(v,a,b) {
+	    var n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
+	    return n < 0 ? 0 : n > w ? w : n;
+	}
+
+	$(window).keydown(function(e) { d[e.which] = true; });
+	$(window).keyup(function(e) { d[e.which] = false; });
+
+	setInterval(function() {
+	    box.css({
+	        left: function(i,v) { return newv(v, 37, 39); },
+	        top: function(i,v) { return newv(v, 38, 40); }
+	    });
+	}, 20);
+
+	</script>
+
+	<script type="text/javascript">
+	// window.onkeyup = function(e) {
+	//    var key = e.keyCode ? e.keyCode : e.which;
+	//
+	// 	if (key == 37) {
+	// 		alert('left');
+	// 	} else if (key == 38) {
+	// 	   alert('up');
+	//    } else if (key == 39) {
+	// 	   alert('right');
+	//    } else if (key == 40) {
+	// 	   alert('down');
+	//    }
+	// }
+
+	</script>
 
 </head>
 <body>
 	<div id="body">
-		<div class="frame">
+		<div class="frame" id="container">
 			<div id="plane">
 				<div class="plane_body"></div>
 			</div>
-			
+
+			<!-- Clouds -->
 			<div class="clds"></div>
 			<div class="clds2"></div>
+
+			<!-- Enemies -->
+			<div class="e1"></div>
 		</div>
 
-	</div>
-	<div class="btns">
-			<div class="b1 btn-primary">Start</div>
-			<div class="b2 btn-primary">Stop</div>
 	</div>
 </body>
 </html>
