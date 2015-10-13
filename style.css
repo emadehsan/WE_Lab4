@@ -19,20 +19,16 @@
 }
 
 /*plane*/
-#plane{
-	position:absolute;
-	top:100px;
-	left:300px;
-	/*border: 1px solid red;*/
-	z-index: 100;
-	animation: plane 1.2s linear infinite;
-}
-.plane_body{
+#plane {
 	background-image: url('plane.gif');
-	height: 150px;
-	border: 1px solid yellow;
-	width: 350px;
 	background-repeat: no-repeat;
+	border: 1px solid yellow;
+	height: 150px;
+	width: 320px;
+	position: relative;
+	top:190px;
+	left:300px;
+	/*animation: plane 1.2s linear infinite;*/
 }
 
 @keyframes plane {
@@ -119,7 +115,7 @@
 }
 
 /*Enemy Fomatting*/
-.e1{
+#e1{
 	background-image: url('enemy.gif');
 	position:absolute;
 	min-height: 46px;
@@ -130,7 +126,7 @@
 
 	animation: enemyA 3s linear infinite;
 }
-.e2{
+#e2{
 	background-image: url('enemy.gif');
 	position:absolute;
 	min-height: 46px;

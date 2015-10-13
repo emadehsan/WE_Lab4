@@ -33,9 +33,10 @@
 	</script>
 
 	<script type="text/javascript">
-	// var plane = document.getElementById('plane');
 
-	window.onkeyup = function(e) {
+	// window.onkeyup = function(e) {
+	function handleKeys (e) {
+		var plane = document.getElementById("plane");
 		var left = plane.style.left,
 		top = plane.style.top,
 		right = plane.style.right,
@@ -43,54 +44,102 @@
 
 	   var key = e.keyCode ? e.keyCode : e.which;
 		if (key == 37) {
-			alert('left');
+			// alert('left');
 			moveLeft();
 		} else if (key == 38) {
-		   alert('up');
+		   // alert('up');
 		   moveUp();
 	   } else if (key == 39) {
-		   alert('right');
+		   // alert('right');
 		   moveRight();
 	   } else if (key == 40) {
-		   alert('down');
+		   // alert('down');
 		   moveDown();
 	   }
 	}
 
 	function moveLeft() {
-		if (plane.style.left > 0)
-			plane.style.left--;
+		var plane = document.getElementById("plane");
+		if (plane.style.left === "")
+			plane.style.left = 300 + 'px';
+		else 
+			plane.style.left = (parseInt(plane.style.left) - 5) + 'px';
 	}
 	function moveUp() {
-		if (plane.style.top > 0)
-			plane.style.top--;
+		var plane = document.getElementById("plane");
+		if (plane.style.top === "")
+			plane.style.top = 190 + 'px';
+		else 
+			plane.style.top = (parseInt(plane.style.top) - 5) + 'px';
+
 	}
 	function moveRight() {
-		if (plane.style.right > 0)
-			plane.style.right--;
+		var plane = document.getElementById("plane");
+		if (plane.style.left === "")
+			plane.style.left = 300 + 'px';
+		else 
+			plane.style.left = (parseInt(plane.style.left) + 5) + 'px';
 	}
 	function moveDown() {
-		if (plane.style.bottom > 0)
-			plane.style.bottom--;
+		var plane = document.getElementById("plane");
+		if (plane.style.top === "")
+			plane.style.top = 190 + 'px';
+		else 
+			plane.style.top = (parseInt(plane.style.top) + 5) + 'px';
 	}
+
+	// Registering the event listener
+	function getReady() {
+		window.addEventListener('keydown', handleKeys);
+	}
+
+	setInterval(function(){
+    // getComputedStyle().left
+    var e1 = document.getElementById("e1");
+    var e2 = document.getElementById("e2");
+    var plane = document.getElementById("plane");
+
+    // console.log('plane left: ' + plane.getComputedStyle().left);
+    // console.log('e1 lef: ' + e1.getComputedStyle().left)
+    // console.log('e2 lef: ' + e2.getComputedStyle().left)
+
+	if (plane.style.left === "") {
+		plane.style.left = '300px';
+		plane.style.top = '190px';
+	}
+    if (e1.style.left === "") {
+    	e1.style.left = '300px';
+		e1.style.top = '190px';
+    }
+    if (e2.style.left === "") {
+    	e2.style.left = '300px';
+		e2.style.top = '190px';
+    }
+
+    console.log('plane left: ' + plane.style.left);
+    console.log('e1 lef: ' + e1.style.left)
+    console.log('e2 lef: ' + e2.style.left)
+    alert(parseInt(plane.style.left));
+
+
+	},33);
 
 	</script>
 
 </head>
-<body>
+<body onload="getReady()" onkeydown="" onkeyup="" >
 	<div id="body">
 		<div class="frame" id="container">
-			<div id="plane">
-				<div class="plane_body"></div>
-			</div>
+			<!-- Plane -->
+			<div id="plane"></div>
 
 			<!-- Clouds -->
 			<div class="clds"></div>
 			<div class="clds2"></div>
 
 			<!-- Enemies -->
-			<div class="e1"></div>
-			<div class="e2"></div>
+			<div id="e1" ></div>
+			<div id="e2" ></div>
 		</div>
 
 	</div>
