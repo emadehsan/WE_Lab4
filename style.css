@@ -130,6 +130,17 @@
 
 	animation: enemyA 3s linear infinite;
 }
+.e2{
+	background-image: url('enemy.gif');
+	position:absolute;
+	min-height: 46px;
+	min-width: 50px;
+	border: 1px solid red;
+	top:140px;
+	left: 0px;
+
+	animation: enemyB 6s linear infinite;
+}
 
 
 @keyframes clds {
@@ -138,7 +149,7 @@
 		opacity:0.0;
 	}
 	30%{
-		opacity:0.8;
+			opacity:0.8;
 	}
 	100% {
 		left:850px;
@@ -173,27 +184,21 @@
 
 @keyframes enemyA {
 	0% {
-		left:0%;
-		top:50%;
-	}
-	15%{
-		left:15%;
-		top: 20%;
-	}
-	30%{
-		left: 30%;
-		top: 10%;
-	}
-	50%{
-		left: 50%;
-		top: 30%;
-	}
-	70%{
-		left: 60%;
-		top: 60%;
+		left: -5%;
+		top: -5%;
 	}
 	100% {
-		top: 110%;
-		left:80%;
+		left: 105%;
+		top: 105%;
+	}
+}
+@keyframes enemyB {
+	0% {
+		left: -5%;
+		top: 105%;
+	}
+	100% {
+		left: 105%;
+		top: -5%;
 	}
 }

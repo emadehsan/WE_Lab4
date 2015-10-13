@@ -4,48 +4,75 @@
 	<title>Fighter Game</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" >
-	var pane = document.getElementsById('#container'),
-	    box = document.getElementsById('#plane'),
-	    w = pane.width() - box.width(),
-	    d = {},
-	    x = 3;
-
-	pane = $('#container');
-	box = $('#plane');
-	alert('boxW: ' + box.width());
-	alert('paneW: ' + pane.width());
-
-	function newv(v,a,b) {
-	    var n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
-	    return n < 0 ? 0 : n > w ? w : n;
-	}
-
-	$(window).keydown(function(e) { d[e.which] = true; });
-	$(window).keyup(function(e) { d[e.which] = false; });
-
-	setInterval(function() {
-	    box.css({
-	        left: function(i,v) { return newv(v, 37, 39); },
-	        top: function(i,v) { return newv(v, 38, 40); }
-	    });
-	}, 20);
+	// var pane = document.getElementById('#container'),
+	//     box = document.getElementById('#plane'),
+	//     w = pane.width() - box.width(),
+	//     d = {},
+	//     x = 3;
+	//
+	// pane = $('#container');
+	// box = $('#plane');
+	// alert('boxW: ' + box.width());
+	// alert('paneW: ' + pane.width());
+	//
+	// function newv(v,a,b) {
+	//     var n = parseInt(v, 10) - (d[a] ? x : 0) + (d[b] ? x : 0);
+	//     return n < 0 ? 0 : n > w ? w : n;
+	// }
+	//
+	<!-- // $(window).keydown(function(e) { d[e.which] = true; }); -->
+	// $(window).keyup(function(e) { d[e.which] = false; });
+	//
+	// setInterval(function() {
+	//     box.css({
+	//         left: function(i,v) { return newv(v, 37, 39); },
+	//         top: function(i,v) { return newv(v, 38, 40); }
+	//     });
+	// }, 20);
 
 	</script>
 
 	<script type="text/javascript">
-	// window.onkeyup = function(e) {
-	//    var key = e.keyCode ? e.keyCode : e.which;
-	//
-	// 	if (key == 37) {
-	// 		alert('left');
-	// 	} else if (key == 38) {
-	// 	   alert('up');
-	//    } else if (key == 39) {
-	// 	   alert('right');
-	//    } else if (key == 40) {
-	// 	   alert('down');
-	//    }
-	// }
+	// var plane = document.getElementById('plane');
+
+	window.onkeyup = function(e) {
+		var left = plane.style.left,
+		top = plane.style.top,
+		right = plane.style.right,
+		bottom = plane.style.bottom;
+
+	   var key = e.keyCode ? e.keyCode : e.which;
+		if (key == 37) {
+			alert('left');
+			moveLeft();
+		} else if (key == 38) {
+		   alert('up');
+		   moveUp();
+	   } else if (key == 39) {
+		   alert('right');
+		   moveRight();
+	   } else if (key == 40) {
+		   alert('down');
+		   moveDown();
+	   }
+	}
+
+	function moveLeft() {
+		if (plane.style.left > 0)
+			plane.style.left--;
+	}
+	function moveUp() {
+		if (plane.style.top > 0)
+			plane.style.top--;
+	}
+	function moveRight() {
+		if (plane.style.right > 0)
+			plane.style.right--;
+	}
+	function moveDown() {
+		if (plane.style.bottom > 0)
+			plane.style.bottom--;
+	}
 
 	</script>
 
@@ -63,6 +90,7 @@
 
 			<!-- Enemies -->
 			<div class="e1"></div>
+			<div class="e2"></div>
 		</div>
 
 	</div>
