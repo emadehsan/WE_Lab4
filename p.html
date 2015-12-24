@@ -57,71 +57,118 @@
 		   moveDown();
 	   }
 	}
+        
+    var planeCoords = {
+        x: 300,
+        y: 190,
+        height: 152,
+        width: 322
+    };
+        
+    var e1 = {
+        x: 0,
+        y: 0,
+        height: 48,
+        width: 52
+    }
+    
+    var e2 = {
+        x: 0,
+        y: 0,
+        height: 48,
+        width: 52
+    }
 
 	function moveLeft() {
 		var plane = document.getElementById("plane");
-		if (plane.style.left === "")
+		if (plane.style.left === "") {
 			plane.style.left = 300 + 'px';
-		else 
-			plane.style.left = (parseInt(plane.style.left) - 5) + 'px';
+            planeCoords.x = 300;
+        }
+		else {
+            plane.style.left = (parseInt(plane.style.left) - 15) + 'px';
+            planeCoords.x = (parseInt(plane.style.left) - 15);
+        }
 	}
 	function moveUp() {
 		var plane = document.getElementById("plane");
-		if (plane.style.top === "")
-			plane.style.top = 190 + 'px';
-		else 
-			plane.style.top = (parseInt(plane.style.top) - 5) + 'px';
+		if (plane.style.top === "") {
+            plane.style.top = 190 + 'px';
+            planeCoords.y = 190;
+        }
+		else {
+            plane.style.top = (parseInt(plane.style.top) - 15) + 'px';
+            planeCoords.y = (parseInt(plane.style.top) - 15);
+        }
 
 	}
 	function moveRight() {
 		var plane = document.getElementById("plane");
-		if (plane.style.left === "")
-			plane.style.left = 300 + 'px';
-		else 
-			plane.style.left = (parseInt(plane.style.left) + 5) + 'px';
+		if (plane.style.left === "") {
+            plane.style.left = 300 + 'px';
+            planeCoords.x = 300;
+        }
+		else {
+            plane.style.left = (parseInt(plane.style.left) + 15) + 'px';
+            planeCoords.x = (parseInt(plane.style.left) + 15) ;
+        }
 	}
 	function moveDown() {
 		var plane = document.getElementById("plane");
-		if (plane.style.top === "")
-			plane.style.top = 190 + 'px';
-		else 
-			plane.style.top = (parseInt(plane.style.top) + 5) + 'px';
+		if (plane.style.top === "") {
+            plane.style.top = 190 + 'px';
+            planeCoords.y = 190;
+        }
+		else {
+            plane.style.top = (parseInt(plane.style.top) + 15) + 'px';
+            planeCoords.y = (parseInt(plane.style.top) + 15);
+        }
 	}
 
 	// Registering the event listener
 	function getReady() {
 		window.addEventListener('keydown', handleKeys);
 	}
+        
+    function isCollide(a, b) 
+    {
+        return !(
+            ((a.y + a.height) < (b.y)) ||
+            (a.y > (b.y + b.height)) ||
+            ((a.x + a.width) < b.x) ||
+            (a.x > (b.x + b.width))
+        );
+    }
 
+    var time = 0;
 	setInterval(function(){
-    // getComputedStyle().left
-    var e1 = document.getElementById("e1");
-    var e2 = document.getElementById("e2");
-    var plane = document.getElementById("plane");
+        // getComputedStyle().left
+        var e1 = document.getElementById("e1");
+        var e2 = document.getElementById("e2");
+        var plane = document.getElementById("plane");
 
-    // console.log('plane left: ' + plane.getComputedStyle().left);
-    // console.log('e1 lef: ' + e1.getComputedStyle().left)
-    // console.log('e2 lef: ' + e2.getComputedStyle().left)
+        // console.log('plane left: ' + plane.getComputedStyle().left);
+        // console.log('e1 lef: ' + e1.getComputedStyle().left)
+        // console.log('e2 lef: ' + e2.getComputedStyle().left)
 
-	if (plane.style.left === "") {
-		plane.style.left = '300px';
-		plane.style.top = '190px';
-	}
-    if (e1.style.left === "") {
-    	e1.style.left = '300px';
-		e1.style.top = '190px';
-    }
-    if (e2.style.left === "") {
-    	e2.style.left = '300px';
-		e2.style.top = '190px';
-    }
+        if (plane.style.left === "") {
+            plane.style.left = '300px';
+            plane.style.top = '190px';
+        }
+        if (e1.style.left === "") {
+            e1.style.left = '300px';
+            e1.style.top = '190px';
+        }
+        if (e2.style.left === "") {
+            e2.style.left = '300px';
+            e2.style.top = '190px';
+        }
+        time++;
+//        if ( time % 100 == 0) {
+//            console.log(planeCoords.down);
+//        }
 
-    console.log('plane left: ' + plane.style.left);
-    console.log('e1 lef: ' + e1.style.left)
-    console.log('e2 lef: ' + e2.style.left)
-    alert(parseInt(plane.style.left));
-
-
+        
 	},33);
 
 	</script>
